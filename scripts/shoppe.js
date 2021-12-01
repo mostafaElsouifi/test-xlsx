@@ -46,7 +46,7 @@ module.exports.scrapingScript = async(searchTerm)=>{
         const newWB = xlsx.utils.book_new();
         const newWS = xlsx.utils.json_to_sheet(allData);
         xlsx.utils.book_append_sheet(newWB, newWS, "allData");
-        xlsx.writeFile(newWB, 'last.xlsx');
+        xlsx.writeFile(newWB, 'last.xlsb');
             return allData
     
         })
