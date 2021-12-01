@@ -42,11 +42,18 @@ module.exports.scrapingScript = async(searchTerm)=>{
                     })
             }
             console.log(allData)
+            Downloadify.create(id,{
+                /* other options are required! read the downloadify docs for more info */
+                filename: "test.xlsx",
+                data: function() { return XLSX.write(allData, {bookType:"xlsx", type:'base64'}); },
+                append: false,
+                dataType: 'base64'
+            });
             
-        const newWB = xlsx.utils.book_new();
-        const newWS = xlsx.utils.json_to_sheet(allData);
-        xlsx.utils.book_append_sheet(newWB, newWS, "allData");
-        xlsx.writeFile(newWB, 'last.xlsb');
+        // const newWB = xlsx.utils.book_new();
+        // const newWS = xlsx.utils.json_to_sheet(allData);
+        // xlsx.utils.book_append_sheet(newWB, newWS, "allData");
+        // xlsx.writeFile(newWB, 'last.xlsx');
             return allData
     
         })
